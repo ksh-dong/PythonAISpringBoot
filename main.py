@@ -28,6 +28,8 @@ class LoggingMiddleware(BaseHTTPMiddleware):        # 로그를 콘솔에 출력
         response = await call_next(request)
         logging.info(f"Status Code : {response.status_code}")
         return response
+app.add_middleware(LoggingMiddleware)
+
 
 class Item(BaseModel):              # Item 객체 검증용
     name : str                      # 상품명 : 문자열
